@@ -1,98 +1,68 @@
 package Model.Class
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.io.File
 import java.io.IOException
 import java.lang.Error
+import java.util.Scanner
 
+@Serializable
 class Ingredients(
-    val name: String,
-    val calories: Int,
+    var name: String,
+    var calories: Int,
     val weight: Int,
     val valueUoM: String,
-    val totalFat: Int,
-    val cholesterol: Int,
-    val sodium: Int,
-    val totalCarbohydrate: Int,
-    val protein: Int)
+    var totalFat: Int,
+    var cholesterol: Int,
+    var sodium: Int,
+    var totalCarbohydrate: Int,
+    var protein: Int){
+    init {
+    println("New ingredient called ${name} that have " +
+    "\n${calories}${valueUoM} kcal, " +
+    "\n${totalFat}${valueUoM} of fat, " +
+    "\n${cholesterol}${valueUoM} of cholesterol, " +
+    "\n${sodium}${valueUoM} of sodium, " +
+    "\n${totalCarbohydrate}${valueUoM} of carbs, " +
+    "\nand ${protein}${valueUoM} of protein\n " +
+    "in ${weight}${valueUoM}" +
+    "\n was now created")
+}}
 
-fun createIngredient(): Ingredients{
-    //UI handler
-    println("Hello, What ingredient You wand to add? Please provide name:")
-    val name: String = readln()
-    println("Your ingredient is: $name, please provide how many calories it have in 1gram.")
-    val kcal: Int = readln().toInt()
-    println("Your ingredient is: $name, please provide how many fat it have in 1gram.")
-    val fat: Int = readln().toInt()
-    println("Your ingredient is: $name, please provide how many cholesterol it have in 1gram.")
-    val cholesterol: Int = readln().toInt()
-    println("Your ingredient is: $name, please provide how many sodium it have in 1gram.")
-    val sodium: Int = readln().toInt()
-    println("Your ingredient is: $name, please provide how many carbs it have in 1gram.")
-    val carbohydrates: Int = readln().toInt()
-    println("Your ingredient is: $name, please provide how many protein it have in 1gram.")
-    val protein: Int = readln().toInt()
+fun createIngredient(name: String, calories: Int, weight: Int, valueUoM: String, totalFat: Int, cholesterol: Int, sodium: Int,totalCarbohydrate:Int,protein: Int): Ingredients{
+
+
+
     //object
-    val newIngredient = Ingredients(name,kcal,1,"g",fat,cholesterol,sodium,carbohydrates,protein)
+    val newIngredient = Ingredients(name,calories,1,"g",totalFat,cholesterol,sodium,totalCarbohydrate,protein)
+    println(Json.encodeToString(newIngredient))
+
     //file handler block
-    val fileName = "${name}.txt"
+    val fileName = "${name}.json"
     val file = File(fileName)
     try {
         file.createNewFile()
         println("File $fileName is created")
         try {
-            file.writeText("New ingredient called ${newIngredient.name} that have " +
-                    "\n${newIngredient.calories}${newIngredient.valueUoM} kcal, " +
-                    "\n${newIngredient.totalFat}${newIngredient.valueUoM} of fat, " +
-                    "\n${newIngredient.cholesterol}${newIngredient.valueUoM} of cholesterol, " +
-                    "\n${newIngredient.sodium}${newIngredient.valueUoM} of sodium, " +
-                    "\n${newIngredient.totalCarbohydrate}${newIngredient.valueUoM} of carbs, " +
-                    "\nand ${newIngredient.protein}${newIngredient.valueUoM} of protein\n " +
-                    "in ${newIngredient.weight}${newIngredient.valueUoM}" +
-                    "\nwas now created")
+            file.writeText(Json.encodeToString(newIngredient))
         } catch (e:Error){
             println("Cant write into file")
         }
-        catch (e:IOException){
-            println("IO error for write to file")
-        }
+
     } catch(e:Error){
         println("File $fileName couldnt be created")
     }
-    catch (e:IOException){
-        println("IO error for new file")
-    }
-    //TODO object init message instead of free text in function
-//    println("New ingredient called ${newIngredient.name} that have " +
-//            "\n${newIngredient.calories}${newIngredient.valueUoM} kcal, " +
-//            "\n${newIngredient.totalFat}${newIngredient.valueUoM} of fat, " +
-//            "\n${newIngredient.cholesterol}${newIngredient.valueUoM} of cholesterol, " +
-//            "\n${newIngredient.sodium}${newIngredient.valueUoM} of sodium, " +
-//            "\n${newIngredient.totalCarbohydrate}${newIngredient.valueUoM} of carbs, " +
-//            "\nand ${newIngredient.protein}${newIngredient.valueUoM} of protein\n " +
-//            "in ${newIngredient.weight}${newIngredient.valueUoM}" +
-//            "\n was now created")
+
     return newIngredient
 }
-
-//fun calculateValues(ingredient: Ingredients, quantity: Int ): Ingredients{
-//    val calculatedIngredient = Ingredients(
-//        ingredient.name,
-//        ingredient.weight * quantity,
-//        quantity,
-//        ingredient.valueUoM,
-//        ingredient.totalFat * quantity,
-//        ingredient.cholesterol * quantity,
-//        ingredient.sodium * quantity,
-//        ingredient.totalCarbohydrate * quantity,
-//        ingredient.protein * quantity)
-//    return calculatedIngredient
-//}
-fun readIngredient(name:String)//: Ingredients
-{
-    val fileName = "${name}.txt"
+fun readIngredient(name:String): Ingredients{
+    val fileName = "${name}.json"
     val file = File(fileName)
+    var data=""
     try {
-        val data = file.readText()
+        data = file.readText()
         println(data)
     } catch (e:Error){
         println("Cant read this file")
@@ -100,20 +70,151 @@ fun readIngredient(name:String)//: Ingredients
     catch (e:IOException){
         println("IO error for read file")
     }
-    catch (e:IOException){
-        println("IO error for new file")
+    val newIngredient = Json.decodeFromString<Ingredients>(data)
+
+    return newIngredient
+}
+fun editIngredient(name: String){
+    val fileName = "${name}.json"
+    val file = File(fileName)
+    var data:String = ""
+    try {
+        data = file.readText()
+        println(data)
+    } catch (e:Error){
+        println("Cant read this file")
     }
-
-//    val name: String = readln()
-//    val kcal: Int = readln().toInt()
-//    val fat: Int = readln().toInt()
-//    val cholesterol: Int = readln().toInt()
-//    val sodium: Int = readln().toInt()
-//    val carbohydrates: Int = readln().toInt()
-//    val protein: Int = readln().toInt()
-//
-//    val newIngredient = Ingredients(name,kcal,1,"g",fat,cholesterol,sodium,carbohydrates,protein)
-
-    return //newIngredient
+    catch (e:IOException){
+        println("IO error for read file")
+    }
+    val newIngredient = Json.decodeFromString<Ingredients>(data)
+    var editMenuChecker = true
+    while (editMenuChecker){
+        println("You are editing ingredient ${newIngredient.name}" +
+                "\nPlease select which field You want to edit now." +
+                "\n1. Name" +
+                "\n2. Calories" +
+                "\n3. Fat" +
+                "\n4. Cholesterol" +
+                "\n5. Sodium" +
+                "\n6. Carbohydrates" +
+                "\n7. Protein" +
+                "\n8. Save changes" +
+                "\n9. Exit without save" +
+                "\n" +
+                "\n" +
+                "\n0. Copy that ingredient" +
+                "")
+        var editMenuControler = readln().toInt()!!
+        when(editMenuControler){
+            1 -> {
+                println("Please provide a new name for Ingredient ${newIngredient.name}:")
+                newIngredient.name = readln()
+                println("New name of ingredient is: ${newIngredient.name}")
+            }
+            2 -> {
+                println("Please provide a new value of calories for Ingredient ${newIngredient.calories}:")
+                newIngredient.calories = readln().toInt()!!
+                println("New calories of ingredient is: ${newIngredient.calories}")
+            }
+            3 -> {
+                println("Please provide a new value of total Fat for Ingredient ${newIngredient.totalFat}:")
+                newIngredient.totalFat = readln().toInt()
+                println("New total Fat of ingredient is: ${newIngredient.totalFat}")
+            }
+            4 -> {
+                println("Please provide a new value of cholesterol for Ingredient ${newIngredient.cholesterol}:")
+                newIngredient.cholesterol = readln().toInt()
+                println("New cholesterol of ingredient is: ${newIngredient.cholesterol}")
+            }
+            5 -> {
+                println("Please provide a new value of sodium for Ingredient ${newIngredient.sodium}:")
+                newIngredient.sodium = readln().toInt()
+                println("New sodium of ingredient is: ${newIngredient.sodium}")
+            }
+            6 -> {
+                println("Please provide a new value of total Carbohydrate for Ingredient ${newIngredient.totalCarbohydrate}:")
+                newIngredient.totalCarbohydrate = readln().toInt()
+                println("New total Carbohydrate of ingredient is: ${newIngredient.totalCarbohydrate}")
+            }
+            7 -> {
+                println("Please provide a new value of protein for Ingredient ${newIngredient.protein}:")
+                newIngredient.protein = readln().toInt()
+                println("New protein of ingredient is: ${newIngredient.protein}")
+            }
+            8 -> {
+                println("Are You really want to save changes?[Y/N]")
+                val twoStepConfirmationChecker = readln()
+                if (twoStepConfirmationChecker == "Y" || twoStepConfirmationChecker =="y"){
+                   deleteIngredient(name)
+                   createIngredient(
+                       newIngredient.name,
+                       newIngredient.calories,
+                       1,
+                       "g",
+                       newIngredient.totalFat,
+                       newIngredient.cholesterol,
+                       newIngredient.sodium,
+                       newIngredient.totalCarbohydrate,
+                       newIngredient.protein
+                   )
+                }
+                    else if (twoStepConfirmationChecker == "N" || twoStepConfirmationChecker =="n"){
+                        editMenuChecker = false
+                    }
+                        else{ println("really?") }
+            }
+            9 -> {
+                println("Are You really want to exit without save changes?[Y/N]")
+                val twoStepConfirmationChecker = readln()
+                if (twoStepConfirmationChecker == "Y" || twoStepConfirmationChecker =="y"){
+                    editMenuChecker = false
+                }
+                else if (twoStepConfirmationChecker == "N" || twoStepConfirmationChecker =="n"){
+                }
+                else{ println("really?") }
+            }
+            0 -> { //todo trycatch?
+                println("Please provide a new name for Ingredient ${newIngredient.name}:")
+                newIngredient.name = readln()
+                println("New name of ingredient is: ${newIngredient.name}")
+                createIngredient(
+                    newIngredient.name,
+                    newIngredient.calories,
+                    1,
+                    "g",
+                    newIngredient.totalFat,
+                    newIngredient.cholesterol,
+                    newIngredient.sodium,
+                    newIngredient.totalCarbohydrate,
+                    newIngredient.protein
+                )
+            }
+            else -> println("really?")
+        }
+    }
+}
+fun deleteIngredient(name: String){
+    val fileName = "${name}.txt"
+    val file = File(fileName)
+    try {
+        val data = file.delete()
+        println("Ingedient $name is removed")
+    } catch (e:Error){
+        println("Cant remove this file")
+    }
+}
+fun calculateValues(ingredient: Ingredients, quantity: Int ): Ingredients{
+    val calculatedIngredient = Ingredients(
+        ingredient.name,
+        ingredient.weight * quantity,
+        quantity,
+        ingredient.valueUoM,
+        ingredient.totalFat * quantity,
+        ingredient.cholesterol * quantity,
+        ingredient.sodium * quantity,
+        ingredient.totalCarbohydrate * quantity,
+        ingredient.protein * quantity)
+    return calculatedIngredient
 }
 
