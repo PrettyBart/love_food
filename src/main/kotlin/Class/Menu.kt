@@ -3,6 +3,9 @@ package Class
 import Model.Class.Ingredients
 import Model.Class.createIngredient
 import Model.Class.deleteIngredient
+import java.io.File
+import java.io.IOException
+import java.lang.Error
 
 class Menu {
 
@@ -10,20 +13,20 @@ class Menu {
 fun mainMenu(){
     var mainMenuChecker = true
     while(mainMenuChecker){
-    println("/////KcalCal\\\\" +
-            "[1]. Ingredients" +
-            "[2]. Receipts" +
-            "[3]. Meal plans" +
-            "[4]. Calculators" +
-            "[5]. Storage" +
+    println("||||KcalCal||||" +
+            "\n[1]. Ingredients" +
+            "\n[2]. Receipts" +
+            "\n[3]. Meal plans" +
+            "\n[4]. Calculators" +
+            "\n[5]. Storage" +
             "\n" +
-            "[6]. Your profile" +
-            "[7]. Statistics" +
-            "[8]. Eat" +
-            "[9]. Dashboard" +
+            "\n[6]. Your profile" +
+            "\n[7]. Statistics" +
+            "\n[8]. Eat" +
+            "\n[9]. Dashboard" +
             "\n" +
-            "[0]. Close app")
-    }
+            "\n[0]. Close app")
+
     var mainMenuControler = readln().toInt()!!
     when(mainMenuControler){
         1 -> {ingredientMenu()}
@@ -40,6 +43,7 @@ fun mainMenu(){
         }
         else -> {}
     }
+    }
 }
 
 
@@ -47,13 +51,13 @@ fun mainMenu(){
 fun ingredientMenu() {
     var ingredientMenuChecker = true
     while(ingredientMenuChecker){
-        println("/////Ingredients\\\\" +
-                "[1]. New" +
-                "[2]. Explore" +
-                "[3]. Delete" +
+        println("||||Ingredients||||" +
+                "\n[1]. New" +
+                "\n[2]. Explore" +
+                "\n[3]. Delete" +
                 "\n" +
-                "[0]. Exit Ingredients")
-    }
+                "\n[0]. Exit Ingredients")
+
     var ingredientMenuControler = readln().toInt()!!
     when(ingredientMenuControler){
         1 -> {initNewIngredient()}
@@ -64,6 +68,7 @@ fun ingredientMenu() {
             ingredientMenuChecker = twoStepVerification()
         }
         else -> {}
+    }
     }
 }
 
@@ -102,10 +107,10 @@ fun dashboardMenu() {
 fun twoStepVerification(): Boolean {
     val twoStepConfirmationChecker = readln()
     if (twoStepConfirmationChecker == "Y" || twoStepConfirmationChecker =="y"){
-    return true}
-    else if (twoStepConfirmationChecker == "N" || twoStepConfirmationChecker =="n"){
     return false}
-    else return false
+    else if (twoStepConfirmationChecker == "N" || twoStepConfirmationChecker =="n"){
+    return true}
+    else return true
 }
 
 
@@ -133,7 +138,30 @@ fun initExploreIngredient() {
 }
 
 fun initDeleteIngredient() {
-    TODO("Not yet implemented")
+    var deleteMenuChecker= true
+    while (deleteMenuChecker){
+        println("What ingredient You wand to delete?\nInput nothing to back.\nPlease provide name:")
+        val name: String = readln()
+        if (name == "") deleteMenuChecker = false
+
+        val fileName = "${name}.json"
+        val file = File(fileName)
+        var data=""
+
+        try {
+            data = file.readText()
+        } catch (e: Error){
+            println("Cant read this file.\n")
+            continue
+        }
+        catch (e: IOException){
+            println("No ingredients with that name.\n")
+            continue
+        }
+
+        println("Are You sure that You want to delete Ingredients?[Y/N]")
+        deleteMenuChecker = twoStepVerification()
+        }
 }
 fun editIngredientMenu(newIngredient: Ingredients){
 var editMenuChecker = true
