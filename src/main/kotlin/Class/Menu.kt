@@ -6,6 +6,8 @@ import Model.Class.deleteIngredient
 import java.io.File
 import java.io.IOException
 import java.lang.Error
+import java.lang.System.gc
+
 
 class Menu {
 
@@ -66,6 +68,7 @@ fun ingredientMenu() {
 
         0 -> {println("Are You sure that You want to exit Ingredients?[Y/N]")
             ingredientMenuChecker = twoStepVerification()
+            gc() //todo lear of using gc
         }
         else -> {}
     }
@@ -134,7 +137,42 @@ fun initNewIngredient(){
     createIngredient(name,kcal,1,"g",fat,cholesterol,sodium,carbohydrates,protein)
 }
 fun initExploreIngredient() {
-    TODO("Not yet implemented")
+    //TODO("Paginated result from all files")
+    var exploterMenuChecker = true
+    while (exploterMenuChecker){
+
+        val directoryPath = File("data/")
+        val ingredients = directoryPath.list()
+        val ingredientsTotal = ingredients.size
+        val pagesTotal = ingredientsTotal/9
+        var pageControler = 1
+        var paginationControler = 1
+
+        for (ingredient in ingredients){
+            println("[${paginationControler}]. ${ingredient.dropLast(5)}\n")
+
+            paginationControler++
+
+            if (paginationControler > 9){
+                paginationControler = 1
+                println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
+                println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [0]. Back")
+                println("\nPage ${pageControler} from ${pagesTotal}\n[M]. Previous page [0]. Back")
+                println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [M]. Previous page [0]. Back")
+            }
+        }
+
+
+//            String contents[] = directoryPath.list();
+//            System.out.println("List of files and directories in the specified directory:");
+//            for(int i=0; i<contents.length; i++) {
+//            System.out.println(contents[i]);
+//        }
+//        }
+
+
+
+    }
 }
 
 fun initDeleteIngredient() {

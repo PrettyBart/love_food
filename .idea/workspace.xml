@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45ca9250-7336-496e-ab64-97f2e048cb64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Class/Ingredients.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Class/Ingredients.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +62,15 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bartosz.firka1\OneDrive\Learning\Kotlin\Projects\love_food\data" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainKt" />
@@ -96,7 +103,10 @@
       <workItem from="1693314841200" duration="2656000" />
       <workItem from="1693977392723" duration="2202000" />
       <workItem from="1694579510026" duration="1590000" />
-      <workItem from="1694841346076" duration="3008000" />
+      <workItem from="1694841346076" duration="3086000" />
+      <workItem from="1695013891351" duration="1398000" />
+      <workItem from="1695098715000" duration="384000" />
+      <workItem from="1695099134549" duration="2528000" />
     </task>
     <task id="LOCAL-00001" summary="Init of project">
       <option name="closed" value="true" />
@@ -114,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693979592061</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="initDeleteIngredient fun created">
+      <option name="closed" value="true" />
+      <created>1694844450015</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694844450015</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +152,48 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init of project" />
     <MESSAGE value="init of UI issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="init of UI issue" />
+    <MESSAGE value="initDeleteIngredient fun created" />
+    <option name="LAST_COMMIT_MESSAGE" value="initDeleteIngredient fun created" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>150</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>151</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>144</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>145</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>153</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>155</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>146</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

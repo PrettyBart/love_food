@@ -40,7 +40,7 @@ fun createIngredient(name: String, calories: Int, weight: Int, valueUoM: String,
     println(Json.encodeToString(newIngredient))
 
     //file handler block
-    val fileName = "${name}.json"
+    val fileName = "data/${name}.json"
     val file = File(fileName)
     try {
         file.createNewFile()
