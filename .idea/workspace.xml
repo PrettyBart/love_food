@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45ca9250-7336-496e-ab64-97f2e048cb64" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Class/Ingredients.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Class/Ingredients.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +104,8 @@
       <workItem from="1694841346076" duration="3086000" />
       <workItem from="1695013891351" duration="1398000" />
       <workItem from="1695098715000" duration="384000" />
-      <workItem from="1695099134549" duration="2528000" />
+      <workItem from="1695099134549" duration="2777000" />
+      <workItem from="1695186627720" duration="2499000" />
     </task>
     <task id="LOCAL-00001" summary="Init of project">
       <option name="closed" value="true" />
@@ -132,7 +131,23 @@
       <option name="project" value="LOCAL" />
       <updated>1694844450015</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Pagination in progress">
+      <option name="closed" value="true" />
+      <created>1695101704422</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695101704422</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Pagination in progress">
+      <option name="closed" value="true" />
+      <created>1695101729041</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695101729041</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +158,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -153,45 +180,76 @@
     <MESSAGE value="Init of project" />
     <MESSAGE value="init of UI issue" />
     <MESSAGE value="initDeleteIngredient fun created" />
-    <option name="LAST_COMMIT_MESSAGE" value="initDeleteIngredient fun created" />
+    <MESSAGE value="Pagination in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pagination in progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
-          <line>150</line>
+          <line>149</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
-          <line>151</line>
+          <line>150</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
-          <line>144</line>
+          <line>143</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
-          <line>145</line>
+          <line>144</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
-          <line>153</line>
+          <line>152</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
-          <line>155</line>
+          <line>167</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
-          <line>146</line>
+          <line>145</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>159</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>160</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>161</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>162</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>163</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Class/Menu.kt</url>
+          <line>164</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

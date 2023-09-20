@@ -2,7 +2,6 @@ package Class
 
 import Model.Class.Ingredients
 import Model.Class.createIngredient
-import Model.Class.deleteIngredient
 import java.io.File
 import java.io.IOException
 import java.lang.Error
@@ -144,21 +143,34 @@ fun initExploreIngredient() {
         val directoryPath = File("data/")
         val ingredients = directoryPath.list()
         val ingredientsTotal = ingredients.size
-        val pagesTotal = ingredientsTotal/9
+        val pagesTotal = ingredientsTotal/10
         var pageControler = 1
-        var paginationControler = 1
-
+        var recordControler = 1
+        var pageMenuControler = 0
         for (ingredient in ingredients){
-            println("[${paginationControler}]. ${ingredient.dropLast(5)}\n")
+            println("[${recordControler}]. ${ingredient.dropLast(5)}\n")
 
-            paginationControler++
+            recordControler++
+            pageMenuControler = (
+            if (pagesTotal < 1)  1
+            else if (pageControler < pagesTotal && pageControler == 1) 2
+            else if (pageControler == pagesTotal && pageControler > 1) 3
+            else if (pageControler != pagesTotal && pageControler > 1) 4
+            else  5)
+            when(pageMenuControler){
+                1 -> println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
+                2 -> println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [0]. Back")
+                3 -> println("\nPage ${pageControler} from ${pagesTotal}\n[M]. Previous page [0]. Back")
+                4 -> println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [M]. Previous page [0]. Back")
+                else -> println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
+            }
 
-            if (paginationControler > 9){
-                paginationControler = 1
-                println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
-                println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [0]. Back")
-                println("\nPage ${pageControler} from ${pagesTotal}\n[M]. Previous page [0]. Back")
-                println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [M]. Previous page [0]. Back")
+            if (recordControler > 9){
+                recordControler = 1
+
+
+
+
             }
         }
 
