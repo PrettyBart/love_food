@@ -137,8 +137,8 @@ fun initNewIngredient(){
 }
 fun initExploreIngredient() {
     //TODO("Paginated result from all files")
-    var exploterMenuChecker = true
-    while (exploterMenuChecker){
+    var explorerMenuChecker = true
+    while (explorerMenuChecker){
 
         val directoryPath = File("data/")
         val ingredients = directoryPath.list()
@@ -147,31 +147,30 @@ fun initExploreIngredient() {
         var pageControler = 1
         var recordControler = 1
         var pageMenuControler = 0
-        for (ingredient in ingredients){
-            println("[${recordControler}]. ${ingredient.dropLast(5)}\n")
-
+        //print all ingredients but only 9 in one page
+        for (ingredient in ingredients) {
+            println("[${recordControler}]. ${ingredient.dropLast(5)}")
             recordControler++
-            pageMenuControler = (
-            if (pagesTotal < 1)  1
-            else if (pageControler < pagesTotal && pageControler == 1) 2
-            else if (pageControler == pagesTotal && pageControler > 1) 3
-            else if (pageControler != pagesTotal && pageControler > 1) 4
-            else  5)
-            when(pageMenuControler){
-                1 -> println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
-                2 -> println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [0]. Back")
-                3 -> println("\nPage ${pageControler} from ${pagesTotal}\n[M]. Previous page [0]. Back")
-                4 -> println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [M]. Previous page [0]. Back")
-                else -> println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
-            }
+//            if (recordControler == 9) {
+//                recordControler = 1
+//            }
+        }
+        //UI
+//            pageMenuControler = (
+//            if (pagesTotal < 1)  1
+//            else if (pageControler < pagesTotal && pageControler == 0) 2
+//            else if (pageControler == pagesTotal && pageControler > 0) 3
+//            else if (pageControler != pagesTotal && pageControler > 0) 4
+//            else  5)
+//            when(pageMenuControler){
+//                1 -> println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
+//                2 -> println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [0]. Back")
+//                3 -> println("\nPage ${pageControler} from ${pagesTotal}\n[M]. Previous page [0]. Back")
+//                4 -> println("\nPage ${pageControler} from ${pagesTotal}\n[N]. Next page [M]. Previous page [0]. Back")
+//                else -> println("\nPage ${pageControler} from ${pagesTotal}\n[0]. Back")
+//            }
 
-            if (recordControler > 9){
-                recordControler = 1
 
-
-
-
-            }
         }
 
 
@@ -185,7 +184,7 @@ fun initExploreIngredient() {
 
 
     }
-}
+//}
 
 fun initDeleteIngredient() {
     var deleteMenuChecker= true
